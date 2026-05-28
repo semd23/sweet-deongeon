@@ -676,23 +676,9 @@ mmCv.width=90; mmCv.height=90;
 /* ═══════════════════════════
    LOGIN UI
 ═══════════════════════════ */
-const gg = document.getElementById('group-grid');
-GROUP_NAMES.forEach((name,i)=>{
-  const btn=document.createElement('button');
-  btn.className='group-btn';
-  btn.textContent=name;
-  btn.style.color=GROUP_COLORS[i];
-  btn.onclick=()=>{
-    document.querySelectorAll('.group-btn').forEach(b=>b.classList.remove('on'));
-    btn.classList.add('on');
-    ME.groupIdx=i; ME.color=GROUP_COLORS[i];
-  };
-  gg.appendChild(btn);
-});
-// default select 1모둠
-gg.children[0].classList.add('on');
+// 모둠 선택 UI 없음 — 자동 배정
 
-async function enterGame(){
+window.enterGame = async function enterGame(){
   const nm = document.getElementById('name-inp').value.trim();
   if(!nm){ alert('이름을 입력해주세요!'); return; }
   // 명단에서 검색
@@ -1460,6 +1446,7 @@ window.submitFinalBoss = async function(){
 };
 
 window.tryInteract=tryInteract;
+window.submitBattle=submitBattle;
 </script>
 </body>
 </html>
